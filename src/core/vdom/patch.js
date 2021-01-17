@@ -192,7 +192,8 @@ export function createPatchFunction (backend) {
         if (isDef(data)) {
           invokeCreateHooks(vnode, insertedVnodeQueue)
         }
-        insert(parentElm, vnode.elm, refElm)
+        insert(parentElm, vnode.elm, re
+          fElm)
       }
 
       if (process.env.NODE_ENV !== 'production' && data && data.pre) {
@@ -348,7 +349,7 @@ export function createPatchFunction (backend) {
     let i, j
     const data = vnode.data
     if (isDef(data)) {
-      if (isDef(i = data.hook) && isDef(i = i.destroy)) i(vnode)
+      if (isDef(i = data.hook) && isDef(i = i.destroy)) i(vnode) // destroy在`core/vdom/modules/ref.js`中定义
       for (i = 0; i < cbs.destroy.length; ++i) cbs.destroy[i](vnode)
     }
     if (isDef(i = vnode.children)) {
@@ -699,7 +700,7 @@ export function createPatchFunction (backend) {
 
   return function patch (oldVnode, vnode, hydrating, removeOnly) {
     if (isUndef(vnode)) {
-      if (isDef(oldVnode)) invokeDestroyHook(oldVnode)
+      if (isDef(oldVnode)) invokeDestroyHook(oldVnode) // 
       return
     }
 
@@ -708,7 +709,7 @@ export function createPatchFunction (backend) {
 
     if (isUndef(oldVnode)) {
       // empty mount (likely as component), create new root element
-      isInitialPatch = true
+      isInitialPatch = true // 初次渲染
       createElm(vnode, insertedVnodeQueue)
     } else {
       const isRealElement = isDef(oldVnode.nodeType)
