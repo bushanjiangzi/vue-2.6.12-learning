@@ -139,6 +139,7 @@ export function lifecycleMixin (Vue: Class<Component>) {
   }
 }
 
+// Vue.prototype.$mount 'platforms/web/runtime/index.js'
 export function mountComponent (
   vm: Component,
   el: ?Element,
